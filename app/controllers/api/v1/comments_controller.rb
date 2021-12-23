@@ -1,6 +1,4 @@
 class Api::V1::CommentsController < ApplicationController
-  before_action :set_comment, except: %i[index create]
-
   def index
     comments = Comment.all.order(created_at: 'DESC')
     render json: comments
@@ -16,19 +14,7 @@ class Api::V1::CommentsController < ApplicationController
     end
   end
 
-  def destroy
-    if @comment.destroy
-      render json: { data: '投稿を削除しました' }
-    else
-      render json: { data: '削除に失敗しました' }
-    end
-  end
-
   private
-
-  def set_comment
-    @comment = Comment.find(params[:id])
-  end
 
   def comment_params
     params.permit(:comment, :post_id)

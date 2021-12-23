@@ -7,7 +7,7 @@ Rails.application.routes.draw do
       resources :posts, only: %i[index show create update destroy]
       resources :users, only: %i[index update]
       resources :favorites, only: %i[index create destroy]
-      resources :comments, only: %i[index create destroy]
+      resources :comments, only: %i[index create]
       resources :rates, only: %i[index create update]
       resources :hotpeppers, only: %i[index]
       resources :labels, only: %i[index create destroy]
